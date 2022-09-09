@@ -1,0 +1,35 @@
+body {
+    display: flex;
+}
+.sign_in {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #00ff4c;
+    border-right: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign_in-field {
+    width: 75%;
+    height: 100px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+.sign_up {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #0066ff;
+    border-left: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign_up-field {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}

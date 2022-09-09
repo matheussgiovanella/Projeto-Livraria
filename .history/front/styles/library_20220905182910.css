@@ -1,0 +1,13 @@
+body {
+    scroll-behavior: smooth;
+}
+
+header {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background-color: red;
+}
+.container {
+    height: 500px;
+}

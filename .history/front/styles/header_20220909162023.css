@@ -1,0 +1,66 @@
+header {
+    border-top: 2px solid #333333;
+    height: 52px;
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    text-decoration: none;
+    padding: 15px;
+    font-size: 20px;
+    transition: 0.2s;
+}
+
+.menu:hover {
+    background-color: #3d3d3d;
+    transition: 0.2s;
+}
+
+.user:hover {
+    background-color: #d60000;
+    transition: 0.2s;
+}
+
+.state:hover {
+    background-color: #12d600;
+    transition: 0.2s;
+}
+
+.city:hover {
+    background-color: #0056d6;
+    transition: 0.2s;
+}
+
+.category:hover {
+    background-color: #d600c4;
+    transition: 0.2s;
+}
+
+.publisher:hover {
+    background-color: #d66700;
+    transition: 0.2s;
+}
+
+.book:hover {
+    background-color: #d6c800;
+    transition: 0.2s;
+}
+
+@media(max-width:991px) {
+    header {
+        border-top: 2px solid #333333;
+        height: 1000px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex-direction: row;
+    }
+    
+    header nav a {
+        text-decoration: none;
+        padding: 15px;
+        font-size: 40px;
+        transition: 0.2s;
+    }
+}

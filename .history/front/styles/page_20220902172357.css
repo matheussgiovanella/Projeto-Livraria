@@ -1,0 +1,15 @@
+body {
+    display: flex;
+}
+.sign_in {
+    width: 50%;
+    height: 100px;
+    background-color: #00ff4c;
+    border-right: 1px solid #ffffff;
+}
+.sign_up {
+    width: 50%;
+    height: 100px;
+    background-color: #0066ff;
+    border-left: 1px solid #ffffff;
+}

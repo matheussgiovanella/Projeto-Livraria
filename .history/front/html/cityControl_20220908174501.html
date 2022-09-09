@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>City control</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../styles/base/reset.css" />
+    <link rel="stylesheet" href="../styles/cityControl.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./menu.html">Go Back</a>
+            <a href="./userControl.html">User Control</a>
+            <a href="./stateControl.html">State Control</a>
+            <a href="./categoryControl.html">Category Control</a>
+            <a href="./publisherControl.html">Publisher Control</a>
+            <a href="./bookControl.html">Book Control</a>
+        </nav>
+    </header>
+    <div class="form-container">
+        <div class="create">
+            <div class="create-field">
+                <h1 class="title">Add new city</h1>
+
+                <label for="name">Name</label>
+                <div>
+                    <input maxlength="45" id="name" />
+                </div>
+
+                <label for="state">State</label>
+                <div>
+                    <select id="state">
+                        <option value="0" selected disabled>SELECT</option>
+                    </select>
+                </div>
+
+                <button onclick="addCity()">Create</button>
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+        <div class="table-field">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr class="header">
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>State</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mytable">
+                        <tr>
+                            <th scope="row" colspan="5">Loading...</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../node_modules/blueimp-md5/js/md5.min.js"></script>
+<script src="../control/cityControl.js"></script>
+<script src="../check/cityCheck.js"></script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Library</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles/base/reset.css" />
+    <link rel="stylesheet" href="styles/library.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <button href="" onclick="scrollToId(this.innerHTML)">addState</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addCity</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addPublisher</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addCategories</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addBooks</button>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="addState">
+
+            <label for="name">Name</label>
+            <div>
+                <input required maxlength="45" id="name" />
+            </div>
+
+            <label for="province">Province</label>
+            <div>
+                <input required maxlength="2" id="province" />
+            </div>
+
+            <button onclick="addState()">Add</button>
+        </div>
+        <div class="addCity">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="addPublisher">
+
+        </div>
+        <div class="addCategories">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="addBooks">
+
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./library.js"></script>
+<script>
+    const scrollToId = async (div) => {
+        const elements = document.querySelectorAll('.highlighted');
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.remove('highlighted');
+        }
+        const element = document.querySelector(`.${div}`);
+        element.scrollIntoView({
+            behavior: "smooth"
+        });
+        element.classList.add('highlighted');
+    }
+</script>
+
+</html>

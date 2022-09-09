@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles/base/reset.css" />
+    <link rel="stylesheet" href="styles/library.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <a href="#addState">addState</a>
+            <a href="" onclick="scroll('#addCity')">addCity</a>
+            <a>addPublisher</a>
+            <a>addCategories</a>
+            <a>addBooks</a>
+        </nav>
+    </header>
+    <div class="container addState" id="addState">
+
+    </div>
+    <div class="container addCity" id="addCity">
+
+    </div>
+    <div class="container addPublisher" id="addPublisher">
+
+    </div>
+    <div class="container addCategories" id="addCategories">
+
+    </div>
+    <div class="container addBooks" id="addBooks">
+
+    </div>
+</body>
+<script>
+    function scroll(id) {
+        document.querySelector(id).scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+        });
+    }
+</script>
+
+</html>

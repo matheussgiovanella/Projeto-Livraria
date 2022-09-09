@@ -1,0 +1,81 @@
+const ENDPOINT = 'http://localhost:3002'
+
+const getUsers = async () => {
+    response = await axios.get(`${ENDPOINT}/users`);
+
+    const users = await response.data;
+    return users;
+}
+
+const checkPassword = async (password,confirmPassword) => {
+    if (password !== confirmPassword) {
+        throw new Error(`The passwords are different!`);
+    }
+}
+const checkAge = async (ageData) => {
+    age = Number(ageData);
+    if (Number.isNaN(age)) {
+        throw new Error(`'${ageData}' is not a number!`);
+    }
+    if (age < 1 || age > 120) {
+        throw new Error(`'${ageData}' is an invalid age!`);
+    }
+    return age.toFixed();
+}
+const encryptPassword = async (password) => {
+    const encryptedPassword = md5(password);
+    return encryptedPassword;
+}
+const checkUser = async () => {
+    const users = getUsers();
+    const email = sign_up.querySelector('#email').value;
+    let password = sign_up.querySelector('#password').value;
+
+    try {
+        await checkPassword(password,confirmPassword);
+        password = await encryptPassword(password);
+
+        for (let i = 0; i < users.length; i++) {
+            const user = users[i];
+            if (user.email === email && user.password === password) {
+                
+            }
+        }
+    } catch (error) {
+        alert(error);
+    }
+}
+const addUser = async () => {
+    let response;
+    const sign_up = document.querySelector('.sign_up-field');
+    
+    const name = sign_up.querySelector('#name').value;
+    const sex = sign_up.querySelector('#sex').value;
+    let age = sign_up.querySelector('#age').value;
+    const email = sign_up.querySelector('#email').value;
+    const password = sign_up.querySelector('#password').value;
+    const confirmPassword = sign_up.querySelector('#confirmPassword').value;
+
+    try {
+        await checkPassword(password,confirmPassword);
+        age = await checkAge(age);
+
+        const newUser = {
+            name: name,
+            sex: sex,
+            age: age,
+            email: email,
+            password: await encryptPassword(password)
+        }
+        
+        axios.post(`${ENDPOINT}/users`, newUser)
+        .then((response) => {
+            alert(`User ${name} created!`);
+        }, (error) => {
+            alert(`Error to create user: ${error.response.data.error}`);
+        })
+        
+    } catch (error) {
+        alert(error);
+    }
+}

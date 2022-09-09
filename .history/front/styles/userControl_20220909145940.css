@@ -1,0 +1,191 @@
+* {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #ffffff;
+}
+
+body {
+    background-color: #333333;
+}
+
+header {
+    background-color: #535353;
+}
+
+.form-container {
+    display: flex;
+    width: 100%;
+}
+
+.sign_up {
+    width: 100%;
+    height: fit-content;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign_up-field {
+    width: 50%;
+    height: fit-content;
+    padding: 2%;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: #ff0000;
+    box-shadow: 0px 5px 0px 5px #000000, inset 0px 0px 0px 5px #000000;
+}
+
+.title {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+label {
+    text-align: left;
+    margin: 0px 10px;
+    font-weight: 600;
+}
+
+input {
+    width: 98%;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: #333333;
+    margin: 5px 0px;
+    box-shadow: inset 0px 0px 2px 2px #0000003a;
+}
+
+input:focus {
+    box-shadow: inset 0px 0px 2px 2px #0000004b;
+}
+
+button {
+    width: 100px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: #808080;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: #333333;
+    margin-top: 10px;
+    box-shadow: 0px 2px 0px 2px #000000, inset 0px 0px 0px 2px #000000;
+    padding: 2px;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #4e4e4e;
+    color: #ffffff;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+button:active {
+    box-shadow: 0px 0px 0px 0px #000000, inset 0px 0px 0px 2px #000000;
+    transform: translateY(2px);
+}
+
+.edit {
+    height: 50px;
+    width: 50px;
+    color: #ffffff;
+    background-color: #00c261;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    border-right: 0px solid #ffffff;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: -2px 2px 0px 2px #000000, inset 0px 0px 0px 2px #000000;
+}
+
+.delete {
+    height: 50px;
+    width: 50px;
+    color: #ffffff;
+    background-color: #db0000;
+    border-top: 2px solid #ffffff;
+    border-left: 0px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 2px 2px 0px 2px #000000, inset 0px 0px 0px 2px #000000;
+}
+
+.table-container {
+    display: flex;
+    width: 100%;
+}
+
+.table-field {
+    width: 100%;
+    height: fit-content;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table {
+    width: 85%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: #333333;
+    box-shadow: 0px 5px 0px 5px #000000, inset 0px 0px 0px 5px #000000;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+}
+
+table tr {
+    border-bottom: 1px solid #ffffff;
+}
+
+table .header {
+    border-bottom: 1px solid #ffffff;
+}
+
+table th {
+    padding: 5px 5px;
+    font-weight: 600;
+}
+
+table td {
+    padding: 5px 5px;
+    font-weight: 300;
+    vertical-align: middle;
+}
+
+table .buttons {
+    display: flex;
+    align-items: center;
+}
+
+table td button {
+    height: 25px;
+    width: 40px;
+}
+
+table td .create {
+    height: 25px;
+    width: 80px
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>State control</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../styles/base/reset.css" />
+    <link rel="stylesheet" href="../styles/stateControl.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./menu.html">Go Back</a>
+            <a href="./userControl.html">User Control</a>
+            <a href="./cityControl.html">City Control</a>
+            <a href="./categoryControl.html">Category Control</a>
+        </nav>
+    </header>
+    <div class="form-container">
+        <div class="create">
+            <div class="create-field">
+                <h1 class="title">Add new state</h1>
+
+                <label for="name">Name</label>
+                <div>
+                    <input maxlength="45" id="name" />
+                </div>
+
+                <label for="province">Province</label>
+                <div>
+                    <input maxlength="2" id="province" />
+                </div>
+
+                <button onclick="addState()">Create</button>
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+        <div class="table-field">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr class="header">
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Province</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mytable">
+                        <tr>
+                            <th scope="row" colspan="5">Loading...</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../node_modules/blueimp-md5/js/md5.min.js"></script>
+<script src="../control/stateControl.js"></script>
+<script src="../check/stateCheck.js"></script>
+
+</html>

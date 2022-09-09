@@ -1,0 +1,15 @@
+header {
+    border-top: 2px solid transparent;
+    height: 52px;
+    display: flex;
+    align-items: center;
+}
+header nav a {
+    text-decoration: none;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.menu:hover {
+    background-color: #3d3d3d;
+}

@@ -1,0 +1,12 @@
+.container {
+    padding: 20%;
+    width: 60%;
+    display: flex;
+    background-color: blue;
+    height: fit-content;
+}
+.option {
+    background-color: red;
+    width: 20%;
+    height: 100px;
+}

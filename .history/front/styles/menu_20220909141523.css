@@ -1,0 +1,69 @@
+* {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #ffffff;
+}
+
+body {
+    background-color: #2e2e2e;
+}
+
+.container {
+    padding: 115px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.option {
+    width: 175px;
+    height: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    box-shadow: 0px 5px 0px 5px #000000, inset 0px 0px 0px 5px #000000;
+    transition: 0.2s;
+}
+
+.option:hover {
+    transform: translateY(3px);
+    box-shadow: 0px 3px 0px 3px #000000, inset 0px 0px 0px 5px #000000;
+    transition: 0.2s;
+}
+
+.option:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px 0px #000000, inset 0px 0px 0px 5px #000000;
+    transition: 0.2s;
+}
+
+.user {
+    background-color: #d60000;
+}
+
+.state {
+    background-color: #12d600;
+}
+
+.city {
+    background-color: #0056d6;
+}
+
+.category {
+    background-color: #5d00d6;
+}
+
+.publisher {
+    background-color: #d66700;
+}
+
+.book {
+    background-color: #00d635;
+}

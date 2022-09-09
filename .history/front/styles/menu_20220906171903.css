@@ -1,0 +1,17 @@
+.container {
+    background-color: blue;
+    padding: 115px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.option {
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}

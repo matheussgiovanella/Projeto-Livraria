@@ -1,0 +1,158 @@
+* {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #ffffff;
+}
+
+body {
+    background-color: #2e2e2e;
+}
+
+.form-container {
+    display: flex;
+    width: 100%;
+}
+
+.sign_in {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign_in-field {
+    width: 75%;
+    height: fit-content;
+    padding: 2%;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: #004e97;
+    height: 500px;
+    box-shadow: 0px 5px 0px 5px #000000, inset 0px 0px 0px 5px #000000;
+}
+
+.sign_up {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign_up-field {
+    width: 75%;
+    height: fit-content;
+    padding: 2%;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: rgb(0, 151, 45);
+    height: 500px;
+    box-shadow: 0px 5px 0px 5px #000000, inset 0px 0px 0px 5px #000000;
+}
+
+.title {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+label {
+    text-align: left;
+    margin: 0px 10px;
+    font-weight: 600;
+}
+
+input {
+    width: 98%;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: #333333;
+    margin: 5px 0px;
+}
+
+button {
+    width: 100px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: #808080;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: #333333;
+    margin-top: 10px;
+    box-shadow: 0px 2px 0px 2px #000000, inset 0px 0px 0px 2px #000000;
+    padding: 2px;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+.table-container {
+    display: flex;
+    width: 100%;
+}
+
+.table-field {
+    width: 100%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #e5ff00;
+    border-top: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table {
+    width: 85%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+}
+
+table tr {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+table .header {
+    border-bottom: 1px solid #000000;
+}
+
+table th {
+    padding: 5px 5px;
+}
+
+table td {
+    padding: 5px 5px;
+}
+
+table .buttons {
+    display: flex;
+}
+
+table td button {
+    height: 25px;
+    width: 40px;
+}

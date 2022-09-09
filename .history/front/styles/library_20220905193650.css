@@ -1,0 +1,32 @@
+body {
+    margin-top: 50px;
+}
+
+header {
+    position: fixed;
+    height: 50px;
+    top: 0;
+    width: 100%;
+    background-color: red;
+    z-index: 10;
+}
+.container {
+    display: flex;
+    height: 250px;
+    padding: 50px;
+}
+.addState {
+    background-color: blue;
+}
+.addCity {
+    background-color: green;
+}
+.addPublisher {
+    background-color: yellow;
+}
+.addCategories {
+    background-color: violet;
+}
+.addBooks {
+    background-color: red;
+}

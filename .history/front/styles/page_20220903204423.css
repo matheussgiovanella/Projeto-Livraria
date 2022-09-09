@@ -1,0 +1,77 @@
+.form-container {
+    display: flex;
+    width: 100%;
+}
+.sign_in {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #00ff4c;
+    border-right: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign_in-field {
+    width: 75%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+.sign_up {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #0066ff;
+    border-left: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign_up-field {
+    width: 75%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+.title {
+    margin-bottom: 15px;
+}
+label {
+    text-align: left;
+}
+.table-container {
+    display: flex;
+    width: 100%;
+}
+.table-field {
+    width: 100%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #e5ff00;
+    border-top: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table {
+    width: 75%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+table {
+    width: 100%;
+}
+table tr {
+    border-bottom: 2px solid;
+}
+table th {
+    padding: 5px 5px;
+}

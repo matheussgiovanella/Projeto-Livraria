@@ -1,0 +1,7 @@
+header {
+    height: 50px;
+    display: flex;
+}
+header nav a {
+    text-decoration: none;
+}

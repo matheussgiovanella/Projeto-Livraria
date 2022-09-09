@@ -1,0 +1,99 @@
+.form-container {
+    display: flex;
+    width: 100%;
+}
+.sign_in {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #00ff4c;
+    border-right: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign_in-field {
+    width: 75%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+.sign_up {
+    width: 50%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #0066ff;
+    border-left: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign_up-field {
+    width: 75%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+.title {
+    margin-bottom: 15px;
+}
+label {
+    text-align: left;
+}
+.table-container {
+    display: flex;
+    width: 100%;
+}
+.table-field {
+    width: 100%;
+    height: fit-content;
+    padding: 50px;
+    background-color: #e5ff00;
+    border-top: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table {
+    width: 85%;
+    height: fit-content;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: red;
+}
+table {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+}
+table tr {
+    border-bottom: 1px solid #f1f1f1;
+}
+table .header {
+    border-bottom: 1px solid #000000;
+}
+table th {
+    padding: 5px 5px;
+}
+table td {
+    padding: 5px 5px;
+}
+table .buttons {
+    display: flex;
+}
+table td button {
+    height: 25px;
+    width: 40px;
+}
+.popUp {
+    z-index: 10;
+    position: absolute;
+    background-color: #ffffffa9;
+    height: 100%;
+    width: 100%;
+}

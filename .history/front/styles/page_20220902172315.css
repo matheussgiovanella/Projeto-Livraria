@@ -1,0 +1,13 @@
+body {
+    display: flex;
+}
+.sign_in {
+    width: 50%;
+    height: 100px;
+    background-color: #00ff4c;
+}
+.sign_up {
+    width: 50%;
+    height: 100px;
+    background-color: #0066ff;
+}

@@ -1,0 +1,11 @@
+header {
+    height: 53px;
+    display: flex;
+    align-items: center;
+}
+header nav a {
+    text-decoration: none;
+    background-color: red;
+    padding: 15px;
+    font-size: 20px;
+}

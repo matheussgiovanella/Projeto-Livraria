@@ -1,0 +1,45 @@
+body {
+    margin-top: 50px;
+}
+
+header {
+    position: fixed;
+    height: 50px;
+    top: 0;
+    width: 100%;
+    background-color: red;
+    z-index: 10;
+}
+.container {
+    display: flex;
+}
+.addState {
+    background-color: blue;
+    width: 50%;
+    height: 250px;
+    padding: 50px;
+}
+.addCity {
+    background-color: green;
+    width: 50%;
+    height: 250px;
+    padding: 50px;
+}
+.addPublisher {
+    background-color: yellow;
+    width: 50%;
+    height: 250px;
+    padding: 50px;
+}
+.addCategories {
+    background-color: violet;
+    width: 50%;
+    height: 250px;
+    padding: 50px;
+}
+.addBooks {
+    background-color: red;
+    width: 50%;
+    height: 250px;
+    padding: 50px;
+}

@@ -1,0 +1,15 @@
+const User = require('./models/User.js');
+const State = require('./models/State.js');
+const City = require('./models/City.js');
+const Publisher = require('./models/Publisher.js');
+const Category = require('./models/Categories.js');
+const Book = require('./models/Books.js');
+
+(async () => {
+    //await User.sync({ force: true });
+    //await State.sync({ force: true });
+    await City.sync({ force: true });
+    //await Publisher.sync({ force: true });
+    //await Category.sync({ force: true });
+    //await Book.sync({ force: true });
+})();

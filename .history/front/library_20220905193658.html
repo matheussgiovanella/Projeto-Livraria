@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles/base/reset.css" />
+    <link rel="stylesheet" href="styles/library.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <button href="" onclick="scrollToId(this.innerHTML)">addState</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addCity</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addPublisher</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addCategories</button>
+            <button href="" onclick="scrollToId(this.innerHTML)">addBooks</button>
+        </nav>
+    </header>
+    <div class="container addState">
+        <label for="name">Name</label>
+        <div>
+            <input id="name"/>
+        </div>
+    </div>
+    <div class="container addCity">
+
+    </div>
+    <div class="container addPublisher">
+
+    </div>
+    <div class="container addCategories">
+
+    </div>
+    <div class="container addBooks">
+
+    </div>
+</body>
+<script>
+    const scrollToId = async (div) => {
+        document.querySelector(`.${div}`).scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+</script>
+
+</html>

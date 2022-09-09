@@ -1,0 +1,31 @@
+body {
+    scroll-behavior: smooth;
+}
+
+header {
+    position: fixed;
+    height: 50px;
+    top: 0;
+    width: 100%;
+    background-color: red;
+    z-index: 10;
+}
+.container {
+    height: 500px;
+}
+.addState {
+    margin-top: 50px;
+    background-color: blue;
+}
+.addCity {
+    background-color: green;
+}
+.addPublisher {
+    background-color: yellow;
+}
+.addCategories {
+    background-color: violet;
+}
+.addBooks {
+    background-color: red;
+}

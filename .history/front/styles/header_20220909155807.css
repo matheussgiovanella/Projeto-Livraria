@@ -1,0 +1,28 @@
+header {
+    border-top: 2px solid #333333;
+    height: 52px;
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    text-decoration: none;
+    padding: 15px;
+    font-size: 20px;
+    transition: 0.2s;
+}
+
+.menu:hover {
+    background-color: #3d3d3d;
+    transition: 0.2s;
+}
+
+.user:hover {
+    background-color: #d60000;
+    transition: 0.2s;
+}
+
+.state:hover {
+    background-color: #12d600;
+    transition: 0.2s;
+}
