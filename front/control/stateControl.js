@@ -1,5 +1,3 @@
-const ENDPOINT = 'http://177.44.248.58/apiLibrary';
-
 const getStates = async () => {
     const response = await axios.get(`${ENDPOINT}/states`);
 
@@ -48,8 +46,8 @@ const loadTable = async () => {
         trHTML += `<td>${state.id}</td>`;
         trHTML += `<td>${state.name}</td>`;
         trHTML += `<td>${state.province}</td>`;
-        trHTML += `<td class="buttons"><button class="edit" onclick="editStateForm('${state.id}')">Edit</button>`;
-        trHTML += `<button class="delete" onclick="confirmStateForm('${state.id}')">Del</button></td>`;
+        trHTML += `<td class="buttons"><button class="edit" onclick="editStateForm('${state.id}')"><i class="fa-solid fa-pencil fa-1x"></i></button>`;
+        trHTML += `<button class="delete" onclick="confirmStateForm('${state.id}')"><i class="fa-solid fa-trash-can fa-1x"></i></button></td>`;
         trHTML += `</tr>`;
     });
     document.getElementById("mytable").innerHTML = trHTML;

@@ -1,5 +1,3 @@
-const ENDPOINT = 'http://177.44.248.58/apiLibrary';
-
 const getUsers = async () => {
     const response = await axios.get(`${ENDPOINT}/users`);
 
@@ -57,8 +55,8 @@ const loadTable = async () => {
         trHTML += `<td>${user.sex}</td>`;
         trHTML += `<td>${user.age}</td>`;
         trHTML += `<td>${user.email}</td>`;
-        trHTML += `<td class="buttons"><button class="edit" onclick="confirmUserForm('${user.id}', this.innerHTML)">Edit</button>`;
-        trHTML += `<button class="delete" onclick="confirmUserForm('${user.id}', this.innerHTML)">Del</button></td>`;
+        trHTML += `<td class="buttons"><button class="edit" onclick="confirmUserForm('${user.id}', 'Edit')"><i class="fa-solid fa-pencil fa-1x"></i></button>`;
+        trHTML += `<button class="delete" onclick="confirmUserForm('${user.id}', 'Del')"><i class="fa-solid fa-trash-can fa-1x"></i></button></td>`;
         trHTML += `</tr>`;
     });
     document.getElementById("mytable").innerHTML = trHTML;

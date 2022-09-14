@@ -2,6 +2,7 @@ const { Op } = require('sequelize');
 const CityModel = require('../models/City.js');
 const State = require('../models/State.js');
 const logs = require('../logs.js');
+const axios = require('axios');
 
 class CityController {
 
@@ -89,7 +90,7 @@ class CityController {
         }
     }
     _validateData = async (data, id) => {
-        const attributes = ['name', 'state_id'];
+        const attributes = ['name', 'cep', 'state_id'];
         const city = {};
 
         for (const attribute of attributes) {
@@ -102,6 +103,12 @@ class CityController {
         if (await this._cityExists(city.name, id, city.state_id)) {
             throw new Error(`The city with name "${city.name}" already exists.`);
         }
+        if (!await this._validCEP(city.cep)) {
+            throw new Error(`The CEP "${city.cep}" is invalid.`);
+        }
+        if (await this._cepExists(city.cep, id)) {
+            throw new Error(`The city with CEP "${city.cep}" already exists.`);
+        }
         return city;
     }
     _cityExists = async (name, id, state_id) => {
@@ -112,6 +119,30 @@ class CityController {
 
         if (id) {
             where.id = { [Op.ne]: id }; // WHERE id != id
+        }
+
+        const count = await CityModel.count({
+            where: where
+        });
+
+        return count > 0;
+    }
+    _validCEP = async (cep) => {
+        const response = await axios.get(`http://viacep.com.br/ws/${cep}/json/`);
+        const data = response.data;
+        if (data.erro) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    _cepExists = async (cep, id) => {
+        const where = {
+            cep: cep
+        }
+
+        if (id) {
+            where.id = { [Op.ne]: id };
         }
 
         const count = await CityModel.count({

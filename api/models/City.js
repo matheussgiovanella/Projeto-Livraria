@@ -17,6 +17,10 @@ City.init({
     name: {
         type: DataTypes.STRING(45),
         allowNull: false
+    },
+    cep: {
+        type: DataTypes.CHAR(9),
+        allowNull: false
     }
 }, {
     sequelize: db,

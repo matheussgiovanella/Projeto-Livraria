@@ -1,5 +1,3 @@
-const ENDPOINT = 'http://177.44.248.58/apiLibrary';
-
 const getCategories = async () => {
     const response = await axios.get(`${ENDPOINT}/categories`);
 
@@ -45,8 +43,8 @@ const loadTable = async () => {
         trHTML += `<tr>`;
         trHTML += `<td>${category.id}</td>`;
         trHTML += `<td>${category.description}</td>`;
-        trHTML += `<td class="buttons"><button class="edit" onclick="editCategoryForm('${category.id}')">Edit</button>`;
-        trHTML += `<button class="delete" onclick="confirmCategoryForm('${category.id}')">Del</button></td>`;
+        trHTML += `<td class="buttons"><button class="edit" onclick="editCategoryForm('${category.id}')"><i class="fa-solid fa-pencil fa-1x"></i></button>`;
+        trHTML += `<button class="delete" onclick="confirmCategoryForm('${category.id}')"><i class="fa-solid fa-trash-can fa-1x"></i></button></td>`;
         trHTML += `</tr>`;
     });
     document.getElementById("mytable").innerHTML = trHTML;

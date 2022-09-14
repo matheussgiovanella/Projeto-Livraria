@@ -1,5 +1,3 @@
-const ENDPOINT = 'http://177.44.248.58/apiLibrary';
-
 const getUsers = async () => {
     const response = await axios.get(`${ENDPOINT}/users`);
 

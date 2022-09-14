@@ -7,15 +7,25 @@ const checkUser = async () => {
     } else if (password === '') {
         popUp(`Password cannot be empty!`);
     } else {
-        password = await encryptPassword(password);
-        response = await axios.get(`${ENDPOINT}/users?email=${email}&password=${password}`);
+        try {
+            password = await encryptPassword(password);
 
-        const user = response.data;
-
-        if (user.length !== 0) {
-            window.location.href = './html/menu.html';
-        } else {
-            popUp(`Invalid email or password!`);
+            const Login = {
+                login: true,
+                email: email,
+                password: password
+            }
+            
+            response = await axios.post(`${ENDPOINT}/users`, Login);
+    
+            const user = response.data;
+            if (user.length !== 0) {
+                window.location.href = './html/menu.html';
+            } else {
+                popUp(`Invalid email or password!`);
+            }
+        } catch (error) {
+            popUp('Error: ', error);
         }
     }
 }

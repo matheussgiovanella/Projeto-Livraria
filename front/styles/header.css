@@ -46,7 +46,12 @@ header nav a {
     transition: 0.2s;
 }
 
-.book:hover {
+.format:hover {
     background-color: #d6c800;
+    transition: 0.2;
+}
+
+.book:hover {
+    background-color: #808080;
     transition: 0.2s;
 }

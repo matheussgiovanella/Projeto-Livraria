@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="../styles/base/reset.css" />
     <link rel="stylesheet" href="../styles/cityControl.css" />
     <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/icons.css" />
+    <link rel="stylesheet" href="../styles/table.css" />
+    <link rel="stylesheet" href="../styles/inputs_and_buttons.css" />
+    <link rel="stylesheet" href="../styles/base/fonts.css" />
+    <script src="https://kit.fontawesome.com/1935aea700.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <a class="menu" href="./menu.html">Go Back</a>
-            <a class="user" href="./userControl.html">User Control</a>
-            <a class="state" href="./stateControl.html">State Control</a>
-            <a class="category" href="./categoryControl.html">Category Control</a>
-            <a class="publisher" href="./publisherControl.html">Publisher Control</a>
-            <a class="book" href="./bookControl.html">Book Control</a>
+            <a class="user" href="./userControl.html">Users</a>
+            <a class="state" href="./stateControl.html">States</a>
+            <a class="category" href="./categoryControl.html">Categories</a>
+            <a class="publisher" href="./publisherControl.html">Publishers</a>
+            <a class="format" href="./formatControl.html">Formats</a>
+            <a class="book" href="./bookControl.html">Books</a>
         </nav>
     </header>
     <div class="form-container">
@@ -28,6 +34,11 @@
                 <label for="name">Name</label>
                 <div>
                     <input maxlength="45" id="name" />
+                </div>
+
+                <label for="cep">CEP</label>
+                <div>
+                    <input maxlength="9" id="cep" />
                 </div>
 
                 <label for="state">State</label>
@@ -49,6 +60,7 @@
                         <tr class="header">
                             <th>#</th>
                             <th>Name</th>
+                            <th>CEP</th>
                             <th>State</th>
                             <th>Action</th>
                         </tr>
@@ -68,5 +80,6 @@
 <script src="../node_modules/blueimp-md5/js/md5.min.js"></script>
 <script src="../control/cityControl.js"></script>
 <script src="../check/cityCheck.js"></script>
+<script src="./globalVariables.js"></script>
 
 </html>

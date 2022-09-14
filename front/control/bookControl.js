@@ -1,8 +1,6 @@
-const ENDPOINT = 'http://177.44.248.58/apiLibrary';
-
 const getBooks = async () => {
     const response = await axios.get(`${ENDPOINT}/books`);
-    
+
     const books = response.data;
     return books;
 }
@@ -19,32 +17,40 @@ const addBook = async () => {
     const author = create.querySelector('#author').value;
     const year = create.querySelector('#year').value;
     const pages = create.querySelector('#pages').value;
+    const value = create.querySelector('#value').value;
     const category = create.querySelector('#category').value;
     const publisher = create.querySelector('#publisher').value;
+    const format = create.querySelector('#format').value;
     if (category != 0) {
         if (publisher != 0) {
-            try {
-                const newBook = {
-                    title: title,
-                    author: author,
-                    publication_year: year,
-                    pages: pages,
-                    category_id: category,
-                    publisher_id: publisher
+            if (format != 0) {
+                try {
+                    const newBook = {
+                        title: title,
+                        author: author,
+                        publication_year: year,
+                        pages: pages,
+                        value: value,
+                        category_id: category,
+                        publisher_id: publisher,
+                        format_id: format
+                    }
+
+                    await checkNewBook(newBook);
+
+                    axios.post(`${ENDPOINT}/books`, newBook)
+                        .then((response) => {
+                            const log = `Book ${title} created!`;
+                            popUp(log);
+                            loadTable();
+                        }, (error) => {
+                            popUp(`Error to create book: `, `${error.response.data.error}`);
+                        })
+                } catch (error) {
+                    popUp('Error: ', error);
                 }
-    
-                await checkNewBook(newBook);
-    
-                axios.post(`${ENDPOINT}/books`, newBook)
-                    .then((response) => {
-                        const log = `Book ${title} created!`;
-                        popUp(log);
-                        loadTable();
-                    }, (error) => {
-                        popUp(`Error to create book: `, `${error.response.data.error}`);
-                    })
-            } catch (error) {
-                popUp('Error: ', error);
+            } else {
+                popUp('Error: you must choose a format!');
             }
         } else {
             popUp('Error: you must choose a publisher!');
@@ -54,28 +60,36 @@ const addBook = async () => {
     }
 }
 
-const loadTable = async () => {
+const loadTableContent = async () => {
     const books = await getBooks();
+    await loadTable(books);
+}
+
+const loadTable = async (books) => {
+    
     let trHTML = '';
     books.forEach(book => {
         const category = book.Category;
         const publisher = book.Publisher;
+        const format = book.Format;
         trHTML += `<tr>`;
         trHTML += `<td>${book.id}</td>`;
         trHTML += `<td>${book.title}</td>`;
         trHTML += `<td>${book.author}</td>`;
         trHTML += `<td>${book.publication_year}</td>`;
         trHTML += `<td>${book.pages}</td>`;
+        trHTML += `<td>${book.value}</td>`;
         trHTML += `<td>${category.description}</td>`;
         trHTML += `<td>${publisher.name}</td>`;
-        trHTML += `<td class="buttons"><button class="edit" onclick="editBookForm('${book.id}')">Edit</button>`;
-        trHTML += `<button class="delete" onclick="confirmBookForm('${book.id}')">Del</button></td>`;
+        trHTML += `<td>${format.description}</td>`;
+        trHTML += `<td class="buttons"><button class="edit" onclick="editBookForm('${book.id}')"><i class="fa-solid fa-pencil fa-1x"></i></button>`;
+        trHTML += `<button class="delete" onclick="confirmBookForm('${book.id}')"><i class="fa-solid fa-trash-can fa-1x"></i></button></td>`;
         trHTML += `</tr>`;
     });
     document.getElementById("mytable").innerHTML = trHTML;
 }
 
-loadTable();
+loadTableContent();
 
 const getCategories = async (id) => {
     let response;
@@ -92,10 +106,11 @@ const getCategories = async (id) => {
     return optionHTML;
 }
 const loadCategories = async () => {
-    const create = document.querySelector('.create-field')
+    const create = document.querySelector('.create-field');
     const optionHTML = await getCategories();
 
     create.querySelector('#category').innerHTML += optionHTML;
+    document.querySelector('#search-category').innerHTML += optionHTML;
 }
 loadCategories();
 
@@ -129,6 +144,28 @@ const loadPublishers = async () => {
 }
 loadPublishers();
 
+const getFormats = async (id) => {
+    let response;
+    if (id) {
+        response = await axios.get(`${ENDPOINT}/formats?exclude=${id}`);
+    } else {
+        response = await axios.get(`${ENDPOINT}/formats`);
+    }
+    const formats = response.data;
+    let optionHTML = ``;
+    for (const format of formats) {
+        optionHTML += `<option value="${format.id}">${format.description}</option>`
+    }
+    return optionHTML;
+}
+const loadFormats = async () => {
+    const create = document.querySelector('.create-field')
+    const optionHTML = await getFormats();
+
+    create.querySelector('#format').innerHTML += optionHTML;
+}
+loadFormats();
+
 const popUp = async (title, message) => {
     Swal.fire({
         title: title,
@@ -152,9 +189,11 @@ const editBookForm = async (id) => {
     const category_id = book.category_id;
     const publisher = book.Publisher;
     const publisher_id = book.publisher_id;
+    const format = book.Format;
+    const format_id = book.format_id;
     const CategoryOptionHTML = await getCategories(category_id);
     const PublisherOptionHTML = await getPublishers(publisher_id);
-    console.log(book)
+    const FormatOptionHTML = await getFormats(format_id);
     Swal.fire({
         title: `Edit ${book.title}`,
         html:
@@ -163,8 +202,10 @@ const editBookForm = async (id) => {
             `<input id="author" class="swal2-input" maxlength="45" placeholder="Author" value="${book.author}">` +
             `<input id="year" class="swal2-input" maxlength="4" placeholder="Year" value="${book.publication_year}">` +
             `<input id="pages" class="swal2-input" maxlength="5" placeholder="Pages" value="${book.pages}">` +
+            `<input id="value" class="swal2-input" maxlength="13" placeholder="Value" value="${book.value}">` +
             `<select class="swal2-input" id="category"><option value="${category.id}" selected>${category.description}</option>${CategoryOptionHTML}</select>` +
-            `<select class="swal2-input" id="publisher"><option value="${publisher.id}" selected>${publisher.name}</option>${PublisherOptionHTML}</select>`,
+            `<select class="swal2-input" id="publisher"><option value="${publisher.id}" selected>${publisher.name}</option>${PublisherOptionHTML}</select>` +
+            `<select class="swal2-input" id="format"><option value="${format.id}" selected>${format.description}</option>${FormatOptionHTML}</select>`,
         focusConfirm: false,
         showCancelButton: true,
         preConfirm: async () => {
@@ -179,18 +220,22 @@ const updateBook = async (id) => {
     const author = swal.querySelector('#author').value;
     const year = swal.querySelector('#year').value;
     const pages = swal.querySelector('#pages').value;
+    const value = swaç.querySelector('#value').value;
     const category = swal.querySelector('#category').value;
     const publisher = swal.querySelector('#publisher').value;
+    const format = swal.querySelector('#format').value;
 
     try {
-        
+
         const Book = {
             title: title,
             author: author,
             publication_year: year,
             pages: pages,
+            value: value,
             category_id: category,
-            publisher_id: publisher
+            publisher_id: publisher,
+            format_id: format
         }
 
         axios.put(`${ENDPOINT}/books/${id}`, Book)
@@ -212,4 +257,66 @@ const deleteBook = async (id) => {
     const log = `Book ${book.title} has been deleted!`;
     popUp(log);
     loadTable();
+}
+
+const searchBooks = async () => {
+    const search = document.querySelector('.search-fields');
+    const title = search.querySelector('#search-title').value;
+    const category = search.querySelector('#search-category').value;
+    const additionalParams = `title=${title}&category=${category}`;
+    await sort(additionalParams);
+}
+
+const displaySort = async (param) => {
+    if (param.innerHTML === '<i class="fa-solid fa-sort"></i>') {
+        param.innerHTML = '<i class="fa-solid fa-sort-up"></i>';
+    } else if (param.innerHTML === '<i class="fa-solid fa-sort-up"></i>') {
+        param.innerHTML = '<i class="fa-solid fa-sort-down"></i>';
+    } else if (param.innerHTML === '<i class="fa-solid fa-sort-down"></i>') {
+        param.innerHTML = '<i class="fa-solid fa-sort"></i>';
+    }
+    searchBooks();
+}
+
+const sort = async (additionalParams) => {
+    const sortValues = await getSortValues();
+
+    let sortParams = ``;
+    let orderParams = ``;
+
+    for (const sortValue of sortValues) {
+        sortParams += `${sortValue.sort}-`
+        orderParams += `${sortValue.order}-`
+    }
+    const response = await axios.get(`${ENDPOINT}/books?sort=${sortParams}&order=${orderParams}&${additionalParams}`);
+    const books = response.data;
+    loadTable(books);
+}
+
+const getSortValues = async () => {
+    const table = document.querySelector('.table');
+    const title = table.querySelector('#title-sort');
+    const value = table.querySelector('#value-sort');
+    const category = table.querySelector('#category-sort');
+    const array = [
+        title,
+        value,
+        category
+    ];
+    const sortValues = [];
+    for (const element of array) {
+        const value = {};
+        if (element.innerHTML === '<i class="fa-solid fa-sort"></i>') {
+            value.sort = ``;
+            value.order = ``;
+        } else if (element.innerHTML === `<i class="fa-solid fa-sort-up"></i>`) {
+            value.sort = `${element.name}`;
+            value.order = `ASC`;
+        } else if (element.innerHTML === `<i class="fa-solid fa-sort-down"></i>`) {
+            value.sort = `${element.name}`;
+            value.order = `DESC`;
+        }
+        sortValues.push(value);
+    }
+    return sortValues;
 }

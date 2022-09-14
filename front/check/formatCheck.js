@@ -1,7 +1,7 @@
-const checkNewCity = async (city) => {
-    const attributes = ['name', 'state_id', 'cep'];
+const checkNewFormat = async (format) => {
+    const attributes = ['description'];
     for (const attribute of attributes) {
-        if (city[attribute] == '') {
+        if (format[attribute] == '') {
             throw new Error(`The field ${attribute} cannot be empty!`);
         }
     }

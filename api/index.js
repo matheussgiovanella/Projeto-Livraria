@@ -25,5 +25,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server started at http://177.44.248.58:${PORT}/`);
+    console.log(`Server started at http://localhost:${PORT}/`);
 });

@@ -2,6 +2,7 @@ const { DataTypes, Model } = require('sequelize');
 const db = require('../db/index.js');
 const Category = require('./Categories.js');
 const Publisher = require('./Publisher.js');
+const Format = require('./Format.js');
 
 class Book extends Model {
 
@@ -30,6 +31,10 @@ Book.init({
     pages: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    value: {
+        type: DataTypes.FLOAT(10,2),
+        allowNull: false
     }
 }, {
     sequelize: db,
@@ -49,6 +54,14 @@ Book.belongsTo(Category, {
 Book.belongsTo(Publisher, {
     foreignKey: {
         name: 'publisher_id',
+        allowNull: false
+    },
+    onDelete: 'CASCADE',
+    targetKey: 'id',
+});
+Book.belongsTo(Format, {
+    foreignKey: {
+        name: 'format_id',
         allowNull: false
     },
     onDelete: 'CASCADE',

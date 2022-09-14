@@ -1,5 +1,3 @@
-const ENDPOINT = 'http://177.44.248.58/apiLibrary';
-
 const getCities = async () => {
     const response = await axios.get(`${ENDPOINT}/cities`);
 
@@ -16,12 +14,14 @@ const addCity = async () => {
     const create = document.querySelector('.create-field');
 
     const name = create.querySelector('#name').value;
+    const cep = create.querySelector('#cep').value;
     const state = create.querySelector('#state').value;
     if (state != 0) {
         const provinces = await axios.get(`${ENDPOINT}/states`);
         try {
             const newCity = {
                 name: name,
+                cep: cep,
                 state_id: state
             }
 
@@ -55,9 +55,10 @@ const loadTable = async () => {
         trHTML += `<tr>`;
         trHTML += `<td>${city.id}</td>`;
         trHTML += `<td>${city.name}</td>`;
+        trHTML += `<td>${city.cep}</td>`;
         trHTML += `<td>${state.name}</td>`;
-        trHTML += `<td class="buttons"><button class="edit" onclick="editCityForm('${city.id}')">Edit</button>`;
-        trHTML += `<button class="delete" onclick="confirmCityForm('${city.id}')">Del</button></td>`;
+        trHTML += `<td class="buttons"><button class="edit" onclick="editCityForm('${city.id}')"><i class="fa-solid fa-pencil fa-1x"></i></button>`;
+        trHTML += `<button class="delete" onclick="confirmCityForm('${city.id}')"><i class="fa-solid fa-trash-can fa-1x"></i></button></td>`;
         trHTML += `</tr>`;
     });
     document.getElementById("mytable").innerHTML = trHTML;
@@ -114,6 +115,7 @@ const editCityForm = async (id) => {
         html:
             `<input id="id" type="hidden" value=${city.id}>` +
             `<input id="name" class="swal2-input" maxlength="45" placeholder="Name" value="${city.name}">` +
+            `<input id="cep" class="swal2-input" maxlength="9" placeholder="CEP" value="${city.cep}">` +
             `<select class="swal2-input" id="state"><option value="${state.id}" selected>${state.name} - ${state.province}</option>${optionHTML}</select>`,
         focusConfirm: false,
         showCancelButton: true,
@@ -127,12 +129,14 @@ const updateCity = async (id) => {
 
     const name = swal.querySelector('#name').value;
     const state = swal.querySelector('#state').value;
+    const cep = swal.querySelector('#cep').value;
 
     try {
         const provinces = await axios.get(`${ENDPOINT}/states`);
         const city = await getCity(id);
         const City = {
             name: name,
+            cep: cep,
             state_id: state
         }
 

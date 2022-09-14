@@ -12,29 +12,14 @@ class UserController {
         const sort = params.sort || 'id';
         const order = params.order || 'ASC';
         const where = {};
-        let logIn = false;
 
-        if (params.email) {
-            where.email = params.email
-            if (params.password) {
-                where.password = params.password
-                logIn = true;
-            }
-        }
         const users = await UserModel.findAll({
             where: where,
             limit: limit,
             offset: offset,
             order: [[sort, order]]
         });
-        if (logIn) {
-            if (users[0]) {
-                const user = users[0].dataValues.email;
 
-                const action = `User ${user} logged in!`;
-                await logs.add(action);
-            }
-        }
         res.json(users);
     }
     show = async (req, res, next) => {
@@ -43,11 +28,27 @@ class UserController {
     }
     create = async (req, res, next) => {
         try {
-            const data = await this._validateData(req.body);
-            const user = await UserModel.create(data);
-            const action = `User ${user.dataValues.email} created`
-            await logs.add(action);
-            res.json(user);
+            console.log(req.body)
+            if (req.body.login) {
+                const users = await UserModel.findAll({
+                    where: {
+                        email: req.body.email,
+                        password: req.body.password
+                    }
+                });
+                if (users.length > 0) {
+                    const user = users[0].dataValues;
+                    const action = `User ${user.email} logged in!`;
+                    await logs.add(action);
+                    res.json(user);
+                }
+            } else {
+                const data = await this._validateData(req.body);
+                const user = await UserModel.create(data);
+                const action = `User ${user.dataValues.email} created`
+                await logs.add(action);
+                res.json(user);
+            }
         } catch (error) {
 
             res.status(400).json({ error: error.message });

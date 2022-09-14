@@ -2,6 +2,7 @@ const { Op } = require('sequelize');
 const BookModel = require('../models/Books.js');
 const Category = require('../models/Categories.js');
 const Publisher = require('../models/Publisher.js');
+const Format = require('../models/Format.js');
 const logs = require('../logs.js');
 
 class BookController {
@@ -11,26 +12,53 @@ class BookController {
         const limit = params.limit || 100;
         const page = params.page || 1;
         const offset = (page - 1) * limit;
-        const sort = params.sort || 'id';
-        const order = params.order || 'ASC';
         const where = {};
+
+        let sort = params.sort || 'id';
+        let order = params.order || 'ASC';
+
+        sort = sort.split('-');
+        order = order.split('-');
+
+        let sortOrder = [];
+
+        for (let i = 0; i < sort.length; i++) {
+            if (sort[i] != '' && order[i] != '') {
+                sortOrder.push([sort[i], order[i]]);
+            }
+        }
+
+        console.log(sortOrder)
+
+        if (params.title) {
+            where.title = {
+                [Op.iLike]: `${params.title}%`
+            }
+        }
+        if (params.category) {
+            if (params.category != 0) {
+                where.category_id = params.category
+            }
+        }
 
         res.json(await BookModel.findAll({
             include: [
                 { model: Category },
-                { model: Publisher}
+                { model: Publisher },
+                { model: Format }
             ],
             where: where,
             limit: limit,
             offset: offset,
-            order: [[sort, order]]
+            order: sortOrder
         }));
     }
     show = async (req, res, next) => {
         const book = await BookModel.findByPk(req.params.bookId, {
             include: [
                 { model: Category },
-                { model: Publisher}
+                { model: Publisher },
+                { model: Format }
             ],
         });
         res.json(book);
@@ -82,7 +110,7 @@ class BookController {
         }
     }
     _validateData = async (data, id) => {
-        const attributes = ['title', 'author', 'publication_year', 'pages', 'category_id', 'publisher_id'];
+        const attributes = ['title', 'author', 'publication_year', 'pages', 'value', 'category_id', 'publisher_id', 'format_id'];
         const book = {};
 
         for (const attribute of attributes) {
@@ -91,8 +119,18 @@ class BookController {
                 throw new Error(`The attribute "${attribute}" is required.`);
             }
             book[attribute] = data[attribute];
+            if (await this._negativeValue(book.value)) {
+                throw new Error(`Value cannot be negative!`);
+            }
         }
         return book;
+    }
+    _negativeValue = async (value) => {
+        if (value < 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
