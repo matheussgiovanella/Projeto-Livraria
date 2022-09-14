@@ -32,7 +32,7 @@ class BookController {
 
         if (params.title) {
             where.title = {
-                [Op.iLike]: `${params.title}%`
+                [Op.iLike]: `%${params.title}%`
             }
         }
         if (params.category) {

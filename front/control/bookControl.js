@@ -42,7 +42,7 @@ const addBook = async () => {
                         .then((response) => {
                             const log = `Book ${title} created!`;
                             popUp(log);
-                            loadTable();
+                            loadTableContent();
                         }, (error) => {
                             popUp(`Error to create book: `, `${error.response.data.error}`);
                         })
@@ -66,7 +66,7 @@ const loadTableContent = async () => {
 }
 
 const loadTable = async (books) => {
-    
+
     let trHTML = '';
     books.forEach(book => {
         const category = book.Category;
@@ -242,7 +242,7 @@ const updateBook = async (id) => {
             .then((response) => {
                 const log = `Book ${title} updated!`;
                 popUp(log);
-                loadTable();
+                loadTableContent();
             }, (error) => {
                 popUp(`Error to update book: ${error.response.data.error}`);
             })
