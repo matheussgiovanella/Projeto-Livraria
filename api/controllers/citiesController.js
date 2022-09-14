@@ -103,7 +103,7 @@ class CityController {
         if (await this._cityExists(city.name, id, city.state_id)) {
             throw new Error(`The city with name "${city.name}" already exists.`);
         }
-        if (!await this._validCEP(city.cep)) {
+        if (!await this._validCEP(city)) {
             throw new Error(`The CEP "${city.cep}" is invalid.`);
         }
         if (await this._cepExists(city.cep, id)) {
@@ -127,9 +127,18 @@ class CityController {
 
         return count > 0;
     }
-    _validCEP = async (cep) => {
-        const response = await axios.get(`http://viacep.com.br/ws/${cep}/json/`);
+    _validCEP = async (city) => {
+        const responseState = await State.findByPk(city.state_id);
+        const state = responseState.dataValues;
+        const response = await axios.get(`http://viacep.com.br/ws/${city.cep}/json/`);
         const data = response.data;
+        
+        if (state.province != data.uf) {
+            return false;
+        }
+        if (city.name.toLowerCase() != data.localidade.toLowerCase()) {
+            return false;
+        }
         if (data.erro) {
             return false;
         } else {
