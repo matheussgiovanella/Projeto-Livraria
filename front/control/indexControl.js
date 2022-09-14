@@ -16,8 +16,8 @@ const addUser = async () => {
     const name = sign_up.querySelector('#name').value;
     const sex = sign_up.querySelector('#sex').value;
     let age = sign_up.querySelector('#age').value;
-    const email = sign_up.querySelector('#email').value;
-    const password = sign_up.querySelector('#password').value;
+    const email = sign_up.querySelector('#createEmail').value;
+    const password = sign_up.querySelector('#createPassword').value;
     const confirmPassword = sign_up.querySelector('#confirmPassword').value;
 
     try {
